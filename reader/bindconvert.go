@@ -1,14 +1,15 @@
 package reader
 
 import (
-	"database/sql"
 	"log"
 	"strconv"
 	"time"
+
+	"github.com/ultranaco/gosql"
 )
 
 // DefineColumns define columns and bind with converter
-func DefineColumns(row sql.Row, columns ...string) (map[string]*BindConvert, error) {
+func DefineColumns(row gosql.RowMapper, columns ...string) (map[string]*BindConvert, error) {
 	columnBinders := map[string]*BindConvert{}
 	binders := make([]interface{}, len(columns))
 
