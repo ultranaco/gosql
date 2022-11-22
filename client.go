@@ -2,8 +2,6 @@ package gosql
 
 import (
 	gosql "database/sql"
-	"errors"
-	"log"
 	"os"
 	"reflect"
 	"strconv"
@@ -72,12 +70,10 @@ func makeConnection(connectionKey, connString, driverName string, connectionPool
 		db.SetMaxIdleConns(connectionPoolSize / 3)
 		db.SetMaxOpenConns(connectionPoolSize)
 		db.SetConnMaxLifetime(time.Duration(connTime) * time.Millisecond)
-	} else {
-		log.Println("func makeConnection => ", err)
 	}
 
 	if db == nil {
-		return Client{}, errors.New("failed to open a database connection gg")
+		return Client{}, err
 	}
 
 	err = db.Ping()
