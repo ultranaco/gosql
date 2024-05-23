@@ -38,7 +38,7 @@ func (b *BindConvert) GetString() string {
 }
 
 // GetInt convert a byte array to integer
-func (b *BindConvert) GetInt64() int {
+func (b *BindConvert) GetInt() int {
 	if b.RawData == nil || len(*b.RawData) <= 0 {
 		return 0
 	}
@@ -54,7 +54,7 @@ func (b *BindConvert) GetInt64() int {
 }
 
 // GetInt convert a byte array to integer
-func (b *BindConvert) GetInt() int64 {
+func (b *BindConvert) GetInt64() int64 {
 	if b.RawData == nil || len(*b.RawData) <= 0 {
 		return 0
 	}
